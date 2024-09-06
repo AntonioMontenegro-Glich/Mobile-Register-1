@@ -1,0 +1,15 @@
+{
+  "name": "first-api-nodejs",
+  "version": "1.0.0",
+  "description": "Teste de primeira api",
+  "main": "teste.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antonio José",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "moongose": "^1.0.0"
+  }
+}
