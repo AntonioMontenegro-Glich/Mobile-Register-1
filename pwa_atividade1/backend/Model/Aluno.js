@@ -1,3 +1,4 @@
+//Importando o Bd(Banco de dados)
 const mongoose = require("mongoose");
 
 const alunoSquema = new mongoose.Schema({
