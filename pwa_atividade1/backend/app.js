@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect('mongodb+srv://Antonio:database5004@projetopwafullstack.6kfcu.mongodb.net/?retryWrites=true&w=majority&appName=ProjetoPWAFullstack');
 
 app.use('/api/alunos', alunosRoute);
 
