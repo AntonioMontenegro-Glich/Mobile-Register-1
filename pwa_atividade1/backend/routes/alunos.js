@@ -1,37 +1,12 @@
+//Exportando o meu gerenciador de rotas ou criador de rotas
 const express = require('express');
 const router = express.Router();
-const Aluno = require('../Model/Aluno');
+//Exportando  o modelo do aluno para poder criar a rota
+const Aluno = require('../controllers/alunosControllers');
 
-//Criar um novo Aluno
-
-router.post('/',async (req,res) => {
-    const {nome,senha} = req.body
-    const newAluno = new Aluno({nome,senha});
-    await newAluno.save();
-    res.json(newAluno);
-});
-
-//Listar os nomes dos alunos Cadastrados
-
-router.get('/',async (req,res) => {
-    const alunos = await Aluno.find();
-    res.json(alunos);
-});
-
-
-
-// Atualizar nome do Aluno
-router.put('/:id',async (req,res) => {
-    const {nome,senha} = req.body
-    const alunosUpdate = await Aluno.finByIdAndUpdate(req,params.id, {nome,senha}, {new: true});
-    res.json(updatedAluno);
-});
-
-// Deletar aluno do Sistema
-router.delete('/:id', async (req,res) => {
-    await Aluno.findByIdAndDelete(req,params.id);
-    res.json({ message:"Aluno foi deletado do sistema com sucesso!"});
-});
+router.get('/', alunosControllers.getAllAlunos);
+router.post('/', alunosControllers.createAluno);
+router.put('/:id', alunosControllers.updateAluno);
+router.delete('/', alunosControllers.deleteAluno);
 
 module.exports = router;
-
