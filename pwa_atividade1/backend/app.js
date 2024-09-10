@@ -14,9 +14,16 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));//Para dados env
 app.use(express.static('public'));
 
 //Conexão com o MongoDb
-mongoose.connect(process.env.MONGODB_URI);
-    .then( () => console.log('MongoDb Connected'))
-    .catch (err => console.log(err));
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,    // Opções para evitar warnings de depreciação
+    useUnifiedTopology: true, // Usa o novo mecanismo de gerenciamento de conexões
+})
+    .then(() => {
+    console.log('MongoDb Connected');
+})
+    .catch (err => {
+    console.log(err);
+});
 
 //Rotas
 const alunosRoute = require('./routes/alunos');
